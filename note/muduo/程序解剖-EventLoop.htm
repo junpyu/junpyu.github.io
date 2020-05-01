@@ -1,0 +1,145 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/TR/REC-html40" xmlns:o = 
+"urn:schemas-microsoft-com:office:office" xmlns:dt = 
+"uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><HEAD><META content="IE=5.0000" 
+http-equiv="X-UA-Compatible">
+
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=ProgId content=OneNote.File>
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"><LINK id=Main-File 
+rel=Main-File href="file4560.htm"><LINK rel=File-List 
+href="file4560.files/filelist.xml"></HEAD>
+<BODY lang=zh-CN style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri">
+<DIV style="DIRECTION: ltr">
+<DIV style="WIDTH: 36.915in; MARGIN-TOP: 0in; DIRECTION: ltr; MARGIN-LEFT: 0in">
+<DIV 
+style="WIDTH: 2.25in; MARGIN-TOP: 0in; DIRECTION: ltr; MARGIN-LEFT: 1.02in">
+<P style="FONT-SIZE: 20pt; MARGIN: 0in"><SPAN lang=zh-CN 
+style='FONT-FAMILY: "Microsoft YaHei"'>程序解剖</SPAN><SPAN lang=en-US 
+style='FONT-FAMILY: "Calibri Light"'>-</SPAN><SPAN lang=x-none 
+style="FONT-FAMILY: Calibri">E</SPAN><SPAN lang=en-US 
+style='FONT-FAMILY: "Calibri Light"'>ventLoop</SPAN></P></DIV>
+<DIV 
+style="WIDTH: 27.165in; MARGIN-TOP: 0.042in; DIRECTION: ltr; MARGIN-LEFT: 0in"><NOBR><IMG 
+alt='  loop&#13;&#10;ChannelList activeChannels_;&#9;&#9;// Poller返回的活动通道&#13;&#10;  Channel* currentActiveChannel_;&#9;// 当前正在处理的活动通道&#13;&#10;  const int kPollTimeMs = 10000;&#13;&#10;while (!quit_)&#13;&#10;程序解剖-EventLoop&#13;&#10;&#13;&#10;首先是EventLoop构造函数&#13;&#10;未命名图片.png EventLoop: : EventLoop() &#10;looping _ (false), &#10;quit _ (false) , &#10;eventHand1ing_(fa1se) , &#10;threadld_(CurrentThread: :tid()), &#10;[poller (Poller: :newDefau1tP011er(this)), &#10;currentActiveChanne1_lNULLj &#13;&#10;未命名图片 砧板&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;未命名图片.png DefaultPoller.cc &#10;EPoIlPoller.cc &#10;EPollPoller.h &#10;PollPoIler.cc &#10;PollPoller_h &#10;16 &#10;17 &#10;20 = &#10;21 &#10;22 &#10;23 &#10;25 &#10;26 &#10;27 &#10;28 &#10;Poller* Pollen: :newDefau1tP011er(EventLoop* loop) &#10;: : getenv( " ) ) &#10;return new PollP011er(100p); &#10;return new EP011P011er(100p); &#13;&#10;newDefaultPoller的实现位于muduo/net/poller/DefaultPoller.cc&#13;&#10;未命名图片.png class POI &#10;public: &#10;public Poller &#10;PollP011er(EventLoop* loop); &#10;virtual NP011P011er(); &#10;virtual Timestamp poll(int timeout-Ms, ChannelList* activeChanne1s); &#10;virtual void channel); &#10;virtual void channel); &#10;private: &#10;void fillActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1s) const; &#10;typedef std: pollfd> PollFdList; &#10;// key}d: &#10;typedef std: ChannelMap; &#10;PollFdList pollfds_ &#10;ChannelMap channels_; &#13;&#10;墨迹绘图&#13;&#10;未命名图片.png class EP011P011er . &#10;public: &#10;public Poller &#10;loop); &#10;virtual NE-PollP011er(); &#10;virtual Timestamp poll(int timeoutMs, ChannelList* activeChanne1s); &#10;virtual void updateChanne1(Channe1* channel); &#10;virtual void removeChanne1(Channe1* channel); &#10;private: &#10;static const int klnitEventListSize = 16; &#10;• void fillActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1s) const; &#10;void update(int operation, Channel* channel); &#10;typedef std: EventList; &#10;typedef std: Channelmap; &#10;int epollfd • &#10;EventList events • &#10;ChannelMap channels _ • &#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;boost::scoped_ptr<Poller> poller_;&#13;&#10;&#13;&#10;说明：&#13;&#10;EventLoop类剖析&#13;&#10;大并发服务器开发（实战）课程中p26，p27，p28中代码来�HYPERLINK "https://www.bilibili.com/video/BV11b411q7zr?p=26"muduo库学习-大并发服务器开发&#13;&#10;�HYPERLINK "https://github.com/chenshuo/muduo"https://github.com/chenshuo/muduo&#13;&#10;参考:&#13;&#10;未命名图片.png onel &#10;thread 顾 名 思 义 每 个 线 程 只 能 有 一 个 EventLoop 对 象 ， 因 此 Event- &#10;Loop 的 构 造 函 数 会 检 查 当 前 线 程 是 否 已 经 创 建 了 其 他 EventLoop 对 象 ， 遇 到 错 误 就 终 &#10;止 程 序 （ LOG-FATAL)0 一 &#10;创 建 了 EventLoop 对 象 的 线 程 是 10 线 程 ， 其 主 要 功 能 是 运 行 事 件 循 环 EventLoop: ． &#10;1 佣 p （ ） 。 EventLoop 对 象 的 生 命 期 通 常 和 其 所 属 的 线 程 一 样 长 ， 它 不 必 是 heap 对 象 &#13;&#10;墨迹绘图&#13;&#10;未命名图片.png Poller &#10;2 : poll() &#10;ChannelA &#10;ChannelB &#10;: fillActiveChannels . &#10;4 : activeChannels &#10;5 : tmdleEvent() &#10;callbacks &#10;6 : handleEvent() &#10;7: &#13;&#10;2020年3月28日&#13;&#10;19:17&#13;&#10;' 
+src="程序解剖-EventLoop_files/mht4784(1).tmp" width=2880 height=1440><IMG 
+alt="未命名图片.png EventLoop: : EventLoop() &#10;looping _ (false), &#10;quit _ (false) , &#10;eventHand1ing_(fa1se) , &#10;threadld_(CurrentThread: :tid()), &#10;[poller (Poller: :newDefau1tP011er(this)), &#10;currentActiveChanne1_lNULLj &#13;&#10;未命名图片.png class EP011P011er . &#10;public: &#10;public Poller &#10;loop); &#10;virtual NE-PollP011er(); &#10;virtual Timestamp poll(int timeoutMs, ChannelList* activeChanne1s); &#10;virtual void updateChanne1(Channe1* channel); &#10;virtual void removeChanne1(Channe1* channel); &#10;private: &#10;static const int klnitEventListSize = 16; &#10;• void fillActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1s) const; &#10;void update(int operation, Channel* channel); &#10;typedef std: EventList; &#10;typedef std: Channelmap; &#10;int epollfd • &#10;EventList events • &#10;ChannelMap channels _ • &#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;" 
+src="程序解剖-EventLoop_files/mht4797(1).tmp" width=1032 height=1440><BR><IMG 
+alt="未命名图片.png class POI &#10;public: &#10;public Poller &#10;PollP011er(EventLoop* loop); &#10;virtual NP011P011er(); &#10;virtual Timestamp poll(int timeout-Ms, ChannelList* activeChanne1s); &#10;virtual void channel); &#10;virtual void channel); &#10;private: &#10;void fillActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1s) const; &#10;typedef std: pollfd> PollFdList; &#10;// key}d: &#10;typedef std: ChannelMap; &#10;PollFdList pollfds_ &#10;ChannelMap channels_; &#13;&#10;未命名图片.png class EP011P011er . &#10;public: &#10;public Poller &#10;loop); &#10;virtual NE-PollP011er(); &#10;virtual Timestamp poll(int timeoutMs, ChannelList* activeChanne1s); &#10;virtual void updateChanne1(Channe1* channel); &#10;virtual void removeChanne1(Channe1* channel); &#10;private: &#10;static const int klnitEventListSize = 16; &#10;• void fillActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1s) const; &#10;void update(int operation, Channel* channel); &#10;typedef std: EventList; &#10;typedef std: Channelmap; &#10;int epollfd • &#10;EventList events • &#10;ChannelMap channels _ • &#13;&#10;未命名图片.png POI &#10;Polle &#10;loop) &#10;: Poller(loop) &#13;&#10;PollPoller的构造函数&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;" 
+src="程序解剖-EventLoop_files/mht479A(1).tmp" width=2880 height=480><IMG 
+alt="未命名图片.png class EP011P011er . &#10;public: &#10;public Poller &#10;loop); &#10;virtual NE-PollP011er(); &#10;virtual Timestamp poll(int timeoutMs, ChannelList* activeChanne1s); &#10;virtual void updateChanne1(Channe1* channel); &#10;virtual void removeChanne1(Channe1* channel); &#10;private: &#10;static const int klnitEventListSize = 16; &#10;• void fillActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1s) const; &#10;void update(int operation, Channel* channel); &#10;typedef std: EventList; &#10;typedef std: Channelmap; &#10;int epollfd • &#10;EventList events • &#10;ChannelMap channels _ • &#13;&#10;" 
+src="程序解剖-EventLoop_files/mht47AD(1).tmp" width=1032 
+height=480><BR></NOBR></DIV>
+<DIV 
+style="WIDTH: 34.916in; MARGIN-TOP: 0.031in; DIRECTION: ltr; MARGIN-LEFT: 1.999in"><NOBR><IMG 
+alt="未命名图片.png Poller: : Ioop) &#10;Poller: &#13;&#10;未命名图片.png private: &#10;EventLoop* ownerLoop • &#10;// PollerFYiWEventLoop &#13;&#10;PollPoller.h&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;未命名图片.png Timestamp PollP011er: : poll(int timeoutMs, ChannelList* activeChanne1s) &#10;// XXX pollfds_ shouldn't change &#10;int numEvents = : pollfds_.size(), timeoutMs); &#10;Timestamp now(Timestamp: : now() ) ; &#10;if (numEvents > 0) &#10;LOG _ TRACE numEvents &quot; events happended&quot; ; &#10;fillActiveChanne1s(numEvents, activeChanne1s); &#10;else if (numEvents 0) &#10;LOG TRACE &#10;else &#10;LOG SYSERR &#10;return now; &#10;' nothing happended&quot;; &#10;&quot; ponpoller: : ) &quot; ; &#13;&#10;Timestamp PollPoller::poll(int timeoutMs, ChannelList* activeChannels)&#13;&#10;未命名图片.png 5*1øe0); &#10;while (!quit_) &#10;activeChanne1s_. clear( ) ; &#10;pollReturnTime_ = poller &#10;//++iteration_ &#10;if (Logger: &#10;printActiveChanne1s( ) ; &#10;&amp;activeChanne1s_) ; &#10;- Logger: : TRACE) &#10;// TODO sort channel by priority &#10;eventHand1ing_ true; &#10;for (ChannelList: :iterator it = activeChanne1s_.begin(); &#10;it activeChanne1s_.end(); ++it) &#10;currentActiveChanne1 &#10;currentActiveChanne1 &#10;eventHand1ing_ = false; &#10;//doPendingFunctors(); &#10;= *it; &#10;currentActiveChanne1_- >hand1eEvent (pollReturnTime_) ; &#10;= NULL; &#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;const int kPollTimeMs = 10000;&#13;&#10;       #include <poll.h>&#13;&#10;       int poll(struct pollfd *fds, nfds_t nfds, int timeout);&#13;&#10;&#13;&#10;           struct pollfd {&#13;&#10;               int   fd;         /* file descriptor */&#13;&#10;               short events;     /* requested events */&#13;&#10;               short revents;    /* returned events */&#13;&#10;           };&#13;&#10;&#13;&#10;The caller should specify the number of items in the fds array in nfds.&#13;&#10;墨迹绘图&#13;&#10;未命名图片.png struct pollfd ( &#10;int fd, / / 文 件 描 述 符 &#10;sh 。 events, / / 要 求 查 洵 的 事 件 掩 码 &#10;sh 。 revents; / / 返 回 的 事 件 掩 码 &#10;int poll(struct pollfd *ufds, unsigned int nfds, int timeout); &#10;p 。 函 数 使 用 p 。 d 类 型 的 结 构 来 监 控 一 组 文 件 句 柄 , ufds 是 要 监 控 的 文 件 句 柄 集 合 , nfds 是 监 &#10;控 的 文 件 句 柄 数 量 , time 。 ut 是 等 待 的 毫 秒 数 , 这 段 时 间 内 无 论 | / 0 是 否 准 备 好 , p 。 Ⅱ 都 会 返 回 。 &#10;time 。 ut 为 负 数 表 示 无 线 等 待 , time 。 ut 为 0 表 示 调 用 后 立 即 返 回 , 执 行 结 果 : 为 0 表 示 超 时 前 没 有 任 &#10;何 事 件 发 生 ; 一 1 表 示 失 败 ; 成 功 则 返 回 结 构 体 中 revents 不 为 0 的 文 件 描 述 符 个 数 · p 。 Ⅱ fd 结 构 监 控 的 &#10;事 件 类 型 如 下 , &#10;5 , &#10;#define POLLIN 0x0001 &#10;#define POLLPRI 0 × 0002 &#10;#defi ne POLLOUT 0x0004 &#10;#define POLLERR 0x0008 &#10;#define POLLHUP 0 × 0010 &#10;#defi ne POLLNVAL 0x0020 &#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;typedef std::vector<struct pollfd> PollFdList;&#13;&#10;           struct pollfd {&#13;&#10;               int   fd;         /* file descriptor */&#13;&#10;               short events;     /* requested events */&#13;&#10;               short revents;    /* returned events */&#13;&#10;&#13;&#10;           };&#13;&#10;PollFdList pollfds_; &#13;&#10;墨迹绘图&#13;&#10;未命名图片.png = void PollP011er: :fi11ActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1sl) const &#10;for (PollFdList: : const _ iterator pfd = &#10;pollfds_. begin(); &#10;pollfds_. end() &amp;&amp; numEvents > 0; ++pfd) &#10;pfd ! = &#10;if (pfd->revents > 0) &#10;-numEvents; &#10;ChannelMap: : const _ iterator ch &#10;= channels_.find(pfd->fd); &#10;assert(ch != channels_.end()); &#10;Channel* channel &#10;= ch->second; &#10;assert(channel->fd() &#10;pfd- >fd) ; &#10;// pfd->revents - e &#10;h _ back ( channel ) ; &#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;activeChannels是传出参数&#13;&#10;墨迹绘图&#13;&#10;从pollfds中取出revents&#13;&#10;放到activeChannels中&#13;&#10;(放在channel的revents)&#13;&#10;墨迹绘图&#13;&#10;EventLoop.cc&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;未命名图片.png Timestamp EP011P011er: :poll(int timeoutMs, ChannelList* activeChanne1s) &#10;int numEvents = : &#10;begin(), &#10;static_cast<int>(events_. size() ) &#10;timeoutMs ) ; &#10;Timestamp now(Timestamp: :now()); &#10;if (numEvents > 0) &#10;&quot; events happended&quot;; &#10;LOG TRACE numEvents &#10;fillActiveChanne1s(numEvents, activeChanne1s) ; &#10;if (implicit_cast<size_t>(numEvents) &#10;events &#10;events_. resize (events_. size()*2) ; &#10;else if (numEvents 0) &#10;size()) &#10;LOG TRACE &#10;else &#10;LOG SYSERR &#10;return now; &#10;&quot; nothing happended&quot;; &#10;&quot;EP011P011er: • &#10;. poll()&quot;; &#13;&#10;" 
+src="程序解剖-EventLoop_files/mht47B0(1).tmp" width=2880 height=1440><IMG 
+alt='墨迹绘图&#13;&#10;未命名图片.png Timestamp EP011P011er: :poll(int timeoutMs, ChannelList* activeChanne1s) &#10;int numEvents = : &#10;begin(), &#10;static_cast<int>(events_. size() ) &#10;timeoutMs ) ; &#10;Timestamp now(Timestamp: :now()); &#10;if (numEvents > 0) &#10;" events happended"; &#10;LOG TRACE numEvents &#10;fillActiveChanne1s(numEvents, activeChanne1s) ; &#10;if (implicit_cast<size_t>(numEvents) &#10;events &#10;events_. resize (events_. size()*2) ; &#10;else if (numEvents 0) &#10;size()) &#10;LOG TRACE &#10;else &#10;LOG SYSERR &#10;return now; &#10;" nothing happended"; &#10;"EP011P011er: • &#10;. poll()"; &#13;&#10;未命名图片.png 1 &#10;2 &#10;3 &#10;4 &#10;5 &#10;6 &#10;7 &#10;8 &#10;9 &#10;10 &#10;11 &#10;12 &#10;13 &#10;typedef union epoll_data { &#10;void *ptr; &#10;int fd; &#10;Ilint32 t u32; &#10;uint64 t u64; &#10;struct epott_event { &#10;uint32 t events; &#10;data; &#10;/ • EpotZ events &#10;/ * User data variable */ &#13;&#10;墨迹绘图&#13;&#10;未命名图片.png typedef std: &#10;typedef std: :map<int, Channel*> ChannelMap; &#10;int epollfd_ &#10;EventListl events_, &#10;ChannelMap channels &#13;&#10;墨迹绘图&#13;&#10;未命名图片.png : void EP011P011er: numEvents, &#10;ChannelList* activeChanne1s) const &#10;<= —•size()); &#10;for (int i = O; &#10;i < numEvents; ++i) &#10;Channel* channel = &#10;. data. ptr) ; &#10;= #ifndef NDEBUG &#10;int fd = channel->fd(); &#10;ChannelMap: : const _ iterator it &#10;= channels_.find(fd); &#10;assert(it channels_.end()); &#10;channel); &#10;#endif &#10;channel - • events) ; &#10;activeChanne1s- ; &#13;&#10;墨迹绘图&#13;&#10;' 
+src="程序解剖-EventLoop_files/mht47C2(1).tmp" width=2148 height=1440><BR><IMG 
+alt="未命名图片.png 5*1øe0); &#10;while (!quit_) &#10;activeChanne1s_. clear( ) ; &#10;pollReturnTime_ = poller &#10;//++iteration_ &#10;if (Logger: &#10;printActiveChanne1s( ) ; &#10;&amp;activeChanne1s_) ; &#10;- Logger: : TRACE) &#10;// TODO sort channel by priority &#10;eventHand1ing_ true; &#10;for (ChannelList: :iterator it = activeChanne1s_.begin(); &#10;it activeChanne1s_.end(); ++it) &#10;currentActiveChanne1 &#10;currentActiveChanne1 &#10;eventHand1ing_ = false; &#10;//doPendingFunctors(); &#10;= *it; &#10;currentActiveChanne1_- >hand1eEvent (pollReturnTime_) ; &#10;= NULL; &#13;&#10;未命名图片.png struct pollfd ( &#10;int fd, / / 文 件 描 述 符 &#10;sh 。 events, / / 要 求 查 洵 的 事 件 掩 码 &#10;sh 。 revents; / / 返 回 的 事 件 掩 码 &#10;int poll(struct pollfd *ufds, unsigned int nfds, int timeout); &#10;p 。 函 数 使 用 p 。 d 类 型 的 结 构 来 监 控 一 组 文 件 句 柄 , ufds 是 要 监 控 的 文 件 句 柄 集 合 , nfds 是 监 &#10;控 的 文 件 句 柄 数 量 , time 。 ut 是 等 待 的 毫 秒 数 , 这 段 时 间 内 无 论 | / 0 是 否 准 备 好 , p 。 Ⅱ 都 会 返 回 。 &#10;time 。 ut 为 负 数 表 示 无 线 等 待 , time 。 ut 为 0 表 示 调 用 后 立 即 返 回 , 执 行 结 果 : 为 0 表 示 超 时 前 没 有 任 &#10;何 事 件 发 生 ; 一 1 表 示 失 败 ; 成 功 则 返 回 结 构 体 中 revents 不 为 0 的 文 件 描 述 符 个 数 · p 。 Ⅱ fd 结 构 监 控 的 &#10;事 件 类 型 如 下 , &#10;5 , &#10;#define POLLIN 0x0001 &#10;#define POLLPRI 0 × 0002 &#10;#defi ne POLLOUT 0x0004 &#10;#define POLLERR 0x0008 &#10;#define POLLHUP 0 × 0010 &#10;#defi ne POLLNVAL 0x0020 &#13;&#10;未命名图片.png struct pollfd pfd; &#10;- listenfd; &#10;pfd.fd &#10;pfd-events - &#10;POLLIN; &#10;pollFdList pollfds; &#10;poll fds ; &#10;int nready; &#10;struct sockaddr_in peeraddr; &#10;socklen_t peerlen; &#10;int connfd; &#10;(I) &#10;if (nready &#10;if (errno &#10;EINTR) &#10;continue ; &#10;pollfds -size(), -1); &#10;if (nready &#10;// nothing happended &#10;conti ; &#10;if -regents &amp; POLLIN) &#10;peerlen — sizeof(peeraddr); &#10;Conn f d &#10;- : (struct , &#10;&amp;peerlen, 1 SOCK_CLOEXEC); &#13;&#10;未命名图片.png = void PollP011er: :fi11ActiveChanne1s(int numEvents, &#10;ChannelList* activeChanne1sl) const &#10;for (PollFdList: : const _ iterator pfd = &#10;pollfds_. begin(); &#10;pollfds_. end() &amp;&amp; numEvents > 0; ++pfd) &#10;pfd ! = &#10;if (pfd->revents > 0) &#10;-numEvents; &#10;ChannelMap: : const _ iterator ch &#10;= channels_.find(pfd->fd); &#10;assert(ch != channels_.end()); &#10;Channel* channel &#10;= ch->second; &#10;assert(channel->fd() &#10;pfd- >fd) ; &#10;// pfd->revents - e &#10;h _ back ( channel ) ; &#13;&#10;  typedef std::map<int, Channel*> ChannelMap;&#9;// key是文件描述符，value是Channel*&#13;&#10;  ChannelMap channels_;&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;未命名图片.png void Channel: : handleEvent(Timestamp receiveTime) &#10;boost: : shared_ptr<void> guard; &#10;if (tied_) &#10;= tie_.lock(); &#10;if ( &#10;handleEventWithGuard (receiveTime) ; &#10;else &#10;handleEventWithGuard ( receiveTime) ; &#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;" 
+src="程序解剖-EventLoop_files/mht47C5(1).tmp" width=2880 height=1440><IMG 
+alt="未命名图片.png 1 &#10;2 &#10;3 &#10;4 &#10;5 &#10;6 &#10;7 &#10;8 &#10;9 &#10;10 &#10;11 &#10;12 &#10;13 &#10;typedef union epoll_data { &#10;void *ptr; &#10;int fd; &#10;Ilint32 t u32; &#10;uint64 t u64; &#10;struct epott_event { &#10;uint32 t events; &#10;data; &#10;/ • EpotZ events &#10;/ * User data variable */ &#13;&#10;未命名图片.png 舀 ， e 可 以 是 以 下 几 个 宏 的 集 合 ： &#10;方 户 v ： 表 示 对 应 的 文 件 描 述 符 可 以 读 （ 包 括 对 端 &amp; 兀 人 ' 正 常 关 闭 ） &#10;丆 户 仅 丿 07 ' ： 表 示 对 应 的 文 件 描 述 符 可 以 写 ； &#10;方 尸 0 尸 ： 表 示 对 应 的 文 件 描 述 符 有 紧 急 的 数 据 可 读 （ 这 里 应 该 表 示 有 带 外 数 据 到 &#10;OLL 方 火 倦 表 示 对 应 的 文 件 描 述 符 发 生 错 误 ： &#10;0 0 户 ： 表 示 对 应 的 文 件 描 述 符 被 挂 断 ： &#10;丆 户 OL 尤 丆 7 ' ： 将 丆 PO 设 为 边 缘 触 发 e 7 污 gg 凹 ℃ 模 式 ， 这 是 相 对 于 水 平 触 发 “ e ／ &#10;7 污 gg ” 来 说 的 。 &#10;方 户 仅 丿 上 SHO 丆 ： 只 监 听 一 次 事 件 ， 当 监 听 完 这 次 事 件 之 后 ， 如 果 还 需 要 继 续 监 听 这 个 &#10;“ c 徊 的 话 ， 需 要 再 次 把 这 个 so 猷 e ' 加 入 到 E 尸 0 队 列 里 &#13;&#10;未命名图片.png 3 ． / 尹 O / 01 在 沅 / 尹 / ， 、 / r C / g 尹 0 / ／ 凹 ， ， 、 ， ／ m 化 丫 ev 凹 、 ， 心 石 m / 六 &#10;收 集 在 ep 。 11 监 控 的 事 件 中 己 经 发 送 的 事 件 。 参 数 。 “ 走 分 配 四 / / “ “ ' 君 &#10;， “ 会 把 专 生 # 倬 么 “ 屮 “ 不 可 以 是 空 店 # ， 内 只 疚 责 把 &#10;舅 区 个 。 “ 下 塑 屮 ， 不 会 去 们 在 户 ， 忝 分 配 内 丿 。 ” 7 “ 。 ℃ 告 之 内 核 &#10;这 个 。 “ 有 多 大 ， 这 个 脚 “ e “ 的 值 不 能 大 于 创 建叩蒯一““'@时 的 、 吡 ， 参 数 艹 。 “ ' 是 &#10;超 时 时 间 （ 亳 秒 ， 0 会 立 即 返 回 ， 寻 将 不 确 定 ， 也 有 说 法 说 是 永 久 阻 塞 ） 。 如 果 函 数 调 用 成 &#10;功 ， 返 回 对 应 杰 0 上 己 准 备 好 的 文 件 描 述 符 数 目 ， 如 返 回 0 表 示 己 超 时 。 &#13;&#10;未命名图片.png : void EP011P011er: numEvents, &#10;ChannelList* activeChanne1s) const &#10;<= —•size()); &#10;for (int i = O; &#10;i < numEvents; ++i) &#10;Channel* channel = &#10;. data. ptr) ; &#10;= #ifndef NDEBUG &#10;int fd = channel->fd(); &#10;ChannelMap: : const _ iterator it &#10;= channels_.find(fd); &#10;assert(it channels_.end()); &#10;channel); &#10;#endif &#10;channel - • events) ; &#10;activeChanne1s- ; &#13;&#10;墨迹绘图&#13;&#10;未命名图片.png std: clients; &#10;int epollfd; &#10;1 &#10;epollfd - &#10;struct epoll_euent event; &#10;event .data.fd - listenfd; &#10;euent.euents = EPOLLIN/. I EPOLLET./; &#10;listenfd, &#10;&amp;euent) ; &#10;EuentList euents(16); &#10;struct sockaddr_in pee+ddr; &#10;socklen_t peerlen; &#10;int connfd; &#10;int nready; &#10;while (1) &#10;nready - &#10;if (nready — &#10;if (errno -e EINTR) &#10;continue; &#10;-begin() &#10;if (nready &#10;// nothing happended &#10;continue; &#10;if ((size_t)nready euents.size()) &#10;events. resize (events. size( ) •2); &#10;for (int i — O; i < nready; ++i) &#13;&#10;" 
+src="程序解剖-EventLoop_files/mht47D8(1).tmp" width=2148 height=1440><BR><IMG 
+alt='未命名图片.png void Channel: : handleEvent(Timestamp receiveTime) &#10;boost: : shared_ptr<void> guard; &#10;if (tied_) &#10;= tie_.lock(); &#10;if ( &#10;handleEventWithGuard (receiveTime) ; &#10;else &#10;handleEventWithGuard ( receiveTime) ; &#13;&#10;未命名图片.png void Channel: receiveTime) &#10;76 &#10;77 = { &#10;eventHand1ing_ = true; &#10;78 &#10;if ( (revents_ &amp; POLLHUP) ! (revents_ &amp; POLLIN)) &#10;79 &#10;if (logHup_) &#10;81 &#10;82 &#10;LOG_WARN "Channel: POLLHUP"; &#10;83 &#10;84 &#10;if (closeCa11back_) closeCa11back_(); &#10;85 &#10;86 &#10;87 &#10;if (revents_ &amp; POLLWAL) &#10;88 &#10;89 = &#10;LOG_WARN << "Channe1: :handle_event() POLLWAL"; &#10;90 &#10;91 &#10;92 &#10;if (revents_ &amp; (POLLERR I POLLWAL)) &#10;93 &#10;94 &#10;if (errorCa11back_) &#10;95 &#10;96 &#10;if (revents_ &amp; (POLLIN I POLLPRI I POLLRDHUP)) &#10;97 &#10;98 &#10;if (readCa11back_) &#10;99 &#10;lee &#10;if (revents_ &amp; POLLOIJT) &#10;101 &#10;102 &#10;if (writeCa11back_) &#10;103 &#10;104 &#10;eventHand1ing_ = false; &#10;105 &#10;106 &#13;&#10;墨迹绘图&#13;&#10;墨迹绘图&#13;&#10;未命名图片.png typedef boost: :function<void()> EventCa11back; &#10;typedef boost: :function<void(Timestamp)> &#13;&#10;墨迹绘图&#13;&#10;回调函数&#13;&#10;未命名图片.png void handleEvent(Timestamp receiveTime) ; &#10;void setReadCa11back(const ReadEventCa11back&amp; cb) &#10;{ readCa11back_ = cb; } &#10;void setWriteCa11back(const EventCa11back&amp; cb) &#10;{ writeCa11back_ = cb; } &#10;void setC10seCa11back(const EventCa11back&amp; cb) &#10;{ closeCa11back_ = cb; } &#10;void setErrorCa11back(const EventCa11back&amp; cb)l &#10;{ errorCa11back_ &#10;= cb; } &#13;&#10;channel中注册回调函数的接口&#13;&#10;' 
+src="程序解剖-EventLoop_files/mht47EB(1).tmp" width=2880 height=1408><IMG 
+alt="未命名图片.png std: clients; &#10;int epollfd; &#10;1 &#10;epollfd - &#10;struct epoll_euent event; &#10;event .data.fd - listenfd; &#10;euent.euents = EPOLLIN/. I EPOLLET./; &#10;listenfd, &#10;&amp;euent) ; &#10;EuentList euents(16); &#10;struct sockaddr_in pee+ddr; &#10;socklen_t peerlen; &#10;int connfd; &#10;int nready; &#10;while (1) &#10;nready - &#10;if (nready — &#10;if (errno -e EINTR) &#10;continue; &#10;-begin() &#10;if (nready &#10;// nothing happended &#10;continue; &#10;if ((size_t)nready euents.size()) &#10;events. resize (events. size( ) •2); &#10;for (int i — O; i < nready; ++i) &#13;&#10;" 
+src="程序解剖-EventLoop_files/mht47FD(1).tmp" width=2148 
+height=1408><BR></NOBR></DIV>
+<DIV 
+style="WIDTH: 9.156in; MARGIN-TOP: 4.471in; DIRECTION: ltr; MARGIN-LEFT: 7.249in"><IMG 
+alt="10 &#10;no &#10;no &#10;2 &#10;3 &#10;4 &#10;5 &#10;6 &#10;7 &#10;8 &#10;9 &#10;10 &#10;11 &#10;accept•read/write &#10;accept•tork &#10;accept+thread &#10;prefork &#10;pre threaded &#10;poll (reactor) &#10;reactor • thread-per-task &#10;reactor •worker thread &#10;reactor *thread poll &#10;reactors in threads &#10;reactors in processes &#10;reactors + thread pool &#10;IJNP &#10;6 &#10;2/3/4/5 &#10;718 &#10;sec6.8 &#10;no &#10;no &#10;V &#10;no &#10;v &#10;no &#10;no &#10;41 &#10;10 &#10;Y &#10;no &#10;no &#10;no &#10;no &#10;Y &#10;Y &#10;Y &#10;Y &#10;no &#10;Y &#10;no &#10;no &#10;no &#10;no &#10;no &#10;Y &#10;process-per-connection &#10;thread-per-connection &#10;UN p &#10;UNP &#10;reactor &#10;thread-per-request &#10;worker-thread-per-connection &#10;one loop per thread &#10;Nginx &#10;cpu m.'H " 
+src="程序解剖-EventLoop_files/mht4800(1).tmp" width=1313 height=594></DIV>
+<DIV 
+style="WIDTH: 6.5in; MARGIN-TOP: 0.854in; DIRECTION: ltr; MARGIN-LEFT: 9.52in">
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;!DOCTYPE 
+html&gt;<SPAN style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;html 
+lang="en"&gt;<SPAN style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;head&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;meta 
+charset="UTF-8"&gt;<SPAN style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;meta name="viewport" 
+content="width=device-width, 
+initial-scale=1,maximum-scale=1,user-scalable=no"&gt;</P>
+<P style="FONT-SIZE: 11pt; MARGIN: 0in"><SPAN style="FONT-FAMILY: Calibri"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;title&gt;H5</SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>调用手机摄像头</SPAN><SPAN 
+style="FONT-FAMILY: Calibri">&lt;/title&gt;</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;style&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;/style&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;/head&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;body&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; MARGIN: 0in"><SPAN 
+style="FONT-FAMILY: Calibri">&lt;h3&gt;HTML5</SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>调用手机摄像头，进行拍照，实时上传</SPAN><SPAN 
+style="FONT-FAMILY: Calibri">&lt;/h3&gt;</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;div&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; MARGIN: 0in"><SPAN style="FONT-FAMILY: Calibri"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;h3&gt;image</SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>图片</SPAN><SPAN 
+style="FONT-FAMILY: Calibri">&lt;/h3&gt;</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;input type="file" 
+accept="image/*" capture="camera"&gt;<SPAN style="mso-spacerun: yes">&nbsp; 
+</SPAN></P>
+<P style="FONT-SIZE: 11pt; MARGIN: 0in"><SPAN style="FONT-FAMILY: Calibri"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;h3&gt;image</SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>图片</SPAN><SPAN 
+style="FONT-FAMILY: Calibri"> – </SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>多选</SPAN><SPAN 
+style="FONT-FAMILY: Calibri">&lt;/h3&gt;</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;input type="file" 
+accept="image/*"<SPAN style="mso-spacerun: yes">&nbsp; </SPAN>multiple&gt; </P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;hr /&gt;</P>
+<P style="FONT-SIZE: 11pt; MARGIN: 0in"><SPAN style="FONT-FAMILY: Calibri"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;h3&gt;image</SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>图片</SPAN><SPAN 
+style="FONT-FAMILY: Calibri"> - </SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>摄像头调用</SPAN><SPAN 
+style="FONT-FAMILY: Calibri">&lt;/h3&gt;</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;input type="file" 
+accept="image/*"<SPAN style="mso-spacerun: yes">&nbsp; </SPAN>capture="user"&gt; 
+</P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;hr /&gt;</P>
+<P style="FONT-SIZE: 11pt; MARGIN: 0in"><SPAN style="FONT-FAMILY: Calibri"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;h3&gt;video</SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>视频</SPAN><SPAN 
+style="FONT-FAMILY: Calibri">&lt;/h3&gt;</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;input type="file" 
+accept="video/*" capture="camcorder"&gt; </P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;hr /&gt;</P>
+<P style="FONT-SIZE: 11pt; MARGIN: 0in"><SPAN style="FONT-FAMILY: Calibri"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;h3&gt;audio</SPAN><SPAN 
+style='FONT-FAMILY: "Microsoft YaHei"'>音频</SPAN><SPAN 
+style="FONT-FAMILY: Calibri">&lt;/h3&gt;</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in"><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>&lt;input type="file" 
+accept="audio/*" capture="microphone"&gt;<SPAN style="mso-spacerun: yes">&nbsp; 
+</SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;/div&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;/body&gt;<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN></P>
+<P lang=en-US 
+style="FONT-SIZE: 11pt; FONT-FAMILY: Calibri; MARGIN: 0in">&lt;/html&gt; 
+</P></DIV></DIV></DIV>
+<DIV>
+<P style="MARGIN: 0in">&nbsp;</P>
+<P 
+style="FONT-SIZE: 9pt; FONT-FAMILY: Arial; COLOR: #969696; DIRECTION: ltr; TEXT-ALIGN: left; MARGIN: 0in">已使用 
+Microsoft OneNote 2016 创建。</P></DIV></BODY></HTML>
